@@ -1,0 +1,54 @@
+{
+  "Name": "Warm",
+  "Caption": "$UI_Tiles_WarmTheme",
+  "Hidden": false,
+  "TessaWallpapers": [ "Wallpaper1", "Wallpaper4", "Wallpaper5", "Wallpaper6", "Wallpaper9", "Wallpaper10" ],
+  "DefaultWallpaper": "Wallpaper10",
+  ".include": [ "shared.json" ],
+
+  "//TessaWindow": null,
+  "WindowChromeBackground": "#FFA9CE62",
+  "WindowChromeBorderBrush": "#FF819E4B",
+
+  "//TessaMessageBox": null,
+  "MessageBoxImageInformationBrush": "#FF819E4B",
+  "ViewDialogSelectButtonBackground": "#1C92C801",
+
+  "//GridView": null,
+  "GridViewHighlightBrush": "#3092C801",
+  "GridViewHeaderBackground": "#1C92C801",
+
+  "//DocumentTabControl": null,
+  "DocumentTabControlBorderBrush": "#AD688D02",
+  "DocumentTabControlBackground": {
+    "StartPoint": "0,0",
+    "EndPoint": "1,1",
+    "GradientStops": [
+      [ "#BB92C801", 0.0 ]
+    ]
+  },
+  "DocumentTabControlSeparatorLeft": {
+    "StartPoint": "0,0",
+    "EndPoint": "0,1",
+    "GradientStops": [
+      [ "#00CAF25E", 0.0 ],
+      [ "#0FADD63E", 0.025 ],
+      [ "#FF83AB0B", 0.4 ],
+      [ "#FF83AB0B", 0.6 ],
+      [ "#0FADD63E", 0.975 ],
+      [ "#00CAF25E", 1.0 ]
+    ]
+  },
+  "DocumentTabControlHighlightBrush": {
+    "StartPoint": "0,0",
+    "EndPoint": "0,1",
+    "GradientStops": [
+      [ "#A0CCCCCC", 0.0 ],
+      [ "#A0FFFFFF", 0.15 ],
+      [ "#A0FFFFFF", 0.85 ],
+      [ "#A0CCCCCC", 1.0 ]
+    ]
+  },
+
+  "//End": null
+}

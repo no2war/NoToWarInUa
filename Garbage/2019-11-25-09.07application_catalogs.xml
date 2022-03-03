@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+
+<t:AppManager xmlns:t="http://syntellect.ru/tessa/catalogs">
+  <t:ApplicationCatalogs t:IsAppManagerUpdateService="tessa">
+    <t:ApplicationCatalog t:Alias="SERVERCODE" t:Path="BASEADDRESS" />
+  </t:ApplicationCatalogs>
+</t:AppManager>

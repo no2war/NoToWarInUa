@@ -1,0 +1,4 @@
+log.txt
+validation.txt
+Publisher.*
+.login
