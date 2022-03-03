@@ -1,0 +1,16 @@
+﻿{
+  ".include": null,
+
+  "//CustomResources": null,
+  "DoubleResource": "Default",
+  "ColorResource": "Color",
+  "BrushResource": "SolidColorBrush",
+  "GradientResource": "LinearGradientBrush",
+  "ComplexGradientResource": {
+    "PropertyType": "LinearGradientBrush",
+    "CloneOnResolve": true,
+    "ZeroInitialOpacity": true
+  },
+
+  "//End": null
+}

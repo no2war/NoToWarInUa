@@ -1,0 +1,170 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Library ID="0626bdd4-80c2-41cf-98f9-5c34cf6275fc" Name="Almaz-Antey local" Priority="20">
+	<Entry Name="AA_RoleName_ApprovingPRN_Less100000">
+		<Comment xml:space="preserve">Название Роли Утверждающий СЗО меньше 100000</Comment>
+		<String Culture="ru" xml:space="preserve">Утверждающий СЗО меньше 100000</String>
+	</Entry>
+	<Entry Name="AA_RoleName_ApprovingPRN_More100000">
+		<Comment xml:space="preserve">Название Роли Утверждающий СЗО больше 100000</Comment>
+		<String Culture="ru" xml:space="preserve">Утверждающий СЗО больше 100000</String>
+	</Entry>
+	<Entry Name="AA_RoleName_AuthorCMK">
+		<Comment xml:space="preserve">Название роли для маршрута согласования Куратор</Comment>
+		<String Culture="en" xml:space="preserve">Curator</String>
+		<String Culture="ru" xml:space="preserve">Куратор</String>
+	</Entry>
+	<Entry Name="AA_RoleName_ExtPerformer">
+		<Comment xml:space="preserve">Имя для контекстной роли, по которой выдаются права на доступ</Comment>
+		<String Culture="ru" xml:space="preserve">Дополнительный согласующий</String>
+	</Entry>
+	<Entry Name="AA_RolesTypes_InitiatorND">
+		<Comment xml:space="preserve">Название роли - Инициатор НД</Comment>
+		<String Culture="ru" xml:space="preserve">Инициатор НД</String>
+	</Entry>
+	<Entry Name="AA_RolesTypes_OrgVKO">
+		<Comment xml:space="preserve">Заголовок для контекстной роли "с организацией ИС Концерна"</Comment>
+		<String Culture="ru" xml:space="preserve">Организация ИС Концерна</String>
+	</Entry>
+	<Entry Name="AA_RolesTypes_VPMO">
+		<Comment xml:space="preserve">Заголовок для контекстной роли "Согласование с ВП МО"</Comment>
+		<String Culture="ru" xml:space="preserve">Куратор</String>
+	</Entry>
+	<Entry Name="AAStates_Doc_Agreed">
+		<Comment xml:space="preserve">Состояние документа - Согласован</Comment>
+		<String Culture="en" xml:space="preserve">Agreed</String>
+		<String Culture="ru" xml:space="preserve">Согласован</String>
+	</Entry>
+	<Entry Name="AAStates_Doc_AgreedWithCreator">
+		<Comment xml:space="preserve">Состояние документа -  На согласовании с исполнителем</Comment>
+		<String Culture="ru" xml:space="preserve">На согласовании с исполнителем</String>
+	</Entry>
+	<Entry Name="AAStates_Doc_AgreedWithDD">
+		<Comment xml:space="preserve">Состояние документа - На согласовании с ВП МО</Comment>
+		<String Culture="ru" xml:space="preserve">На согласовании с ВП МО</String>
+	</Entry>
+	<Entry Name="AAStates_Doc_AgreedWithDeputyCEO">
+		<Comment xml:space="preserve">Состояние документа - На согласовании ЗГД</Comment>
+		<String Culture="en" xml:space="preserve">Agreed with the Deputy General Director</String>
+		<String Culture="ru" xml:space="preserve">На согласовании ЗГД</String>
+	</Entry>
+	<Entry Name="AAStates_Doc_AgreedWithDLS">
+		<Comment xml:space="preserve">Состояние документа - На согласовании с ДПОД</Comment>
+		<String Culture="en" xml:space="preserve">Agreed with Department of Legal Support</String>
+		<String Culture="ru" xml:space="preserve">На согласовании с ДПОД</String>
+	</Entry>
+	<Entry Name="AAStates_Doc_AgreedWithInitiator">
+		<Comment xml:space="preserve">Состояние документа - На согласовании с инициатором</Comment>
+		<String Culture="ru" xml:space="preserve">На согласовании с инициатором</String>
+	</Entry>
+	<Entry Name="AAStates_Doc_AgreedWithOrganization">
+		<Comment xml:space="preserve">Состояние документа - Рассмотрение организацией ИС Концерна</Comment>
+		<String Culture="ru" xml:space="preserve">Рассмотрение организацией ИС Концерна</String>
+	</Entry>
+	<Entry Name="AAStates_Doc_AgreedWithResponsible">
+		<Comment xml:space="preserve">Состояние документа - На согласовании с ответственным за группу/подгруппу </Comment>
+		<String Culture="ru" xml:space="preserve">На согласовании с ответственным за группу/подгруппу </String>
+	</Entry>
+	<Entry Name="AAStates_Doc_AgreedWithSDD">
+		<Comment xml:space="preserve">Состояние документа - На согласовании с ДСР</Comment>
+		<String Culture="ru" xml:space="preserve">На согласовании с ДСР</String>
+	</Entry>
+	<Entry Name="AAStates_Doc_Approved">
+		<Comment xml:space="preserve">Состояние документа - Утвержден</Comment>
+		<String Culture="en" xml:space="preserve">Approved</String>
+		<String Culture="ru" xml:space="preserve">Утвержден</String>
+	</Entry>
+	<Entry Name="AAStates_Doc_Consolidation">
+		<Comment xml:space="preserve">Состояние документа - На консолидации</Comment>
+		<String Culture="en" xml:space="preserve">Consolidation</String>
+		<String Culture="ru" xml:space="preserve">На консолидации</String>
+	</Entry>
+	<Entry Name="AAStates_Doc_NormControl">
+		<Comment xml:space="preserve">Состояние документа - Нормокотроль</Comment>
+		<String Culture="en" xml:space="preserve">Norm Control</String>
+		<String Culture="ru" xml:space="preserve">Нормоконтроль</String>
+	</Entry>
+	<Entry Name="AAStates_Doc_OnConcilationMeeting">
+		<Comment xml:space="preserve">Состояние документа - На согласительном совещании</Comment>
+		<String Culture="en" xml:space="preserve">On сoncilation meeting</String>
+		<String Culture="ru" xml:space="preserve">На согласительном совещании</String>
+	</Entry>
+	<Entry Name="AAStates_Doc_OnTransferToCurator">
+		<Comment xml:space="preserve">Состояние документа - На передаче куратору</Comment>
+		<String Culture="en" xml:space="preserve">On transfer to the curator</String>
+		<String Culture="ru" xml:space="preserve">На передаче куратору</String>
+	</Entry>
+	<Entry Name="AAStates_Doc_OnTransferToDeputyCEO">
+		<Comment xml:space="preserve">Состояние документа - На передаче ЗГД</Comment>
+		<String Culture="en" xml:space="preserve">On transfer to the deputy CEO</String>
+		<String Culture="ru" xml:space="preserve">На передаче ЗГД</String>
+	</Entry>
+	<Entry Name="AAStates_Doc_OnTransferToDLS">
+		<Comment xml:space="preserve">Состояние документа - На передаче в ДПОД</Comment>
+		<String Culture="ru" xml:space="preserve">На передаче в ДПОД</String>
+	</Entry>
+	<Entry Name="AAStates_Doc_OnTransferToGroupResponsible">
+		<Comment xml:space="preserve">Состояние документа - На передаче ответственному за группу/подгруппу НД</Comment>
+		<String Culture="en" xml:space="preserve">On transfer to group responsible</String>
+		<String Culture="ru" xml:space="preserve">На передаче ответственному за группу/подгруппу НД</String>
+	</Entry>
+	<Entry Name="AAStates_Doc_OnTransferToInitiator">
+		<Comment xml:space="preserve">Состояние документа - На передаче инициатору</Comment>
+		<String Culture="en" xml:space="preserve">On transfer to the Initiator</String>
+		<String Culture="ru" xml:space="preserve">На передаче инициатору</String>
+	</Entry>
+	<Entry Name="AAStates_Doc_OnTransferToQMD">
+		<Comment xml:space="preserve">Состояние документа - На передаче в ДУК</Comment>
+		<String Culture="ru" xml:space="preserve">На передаче в ДУК</String>
+	</Entry>
+	<Entry Name="AAStates_Doc_OnTransferToSDD">
+		<Comment xml:space="preserve">Состояние документа - На передаче в ДСР</Comment>
+		<String Culture="en" xml:space="preserve">On transfer to the strategic development department</String>
+		<String Culture="ru" xml:space="preserve">На передаче в ДСР</String>
+	</Entry>
+	<Entry Name="AAStates_Doc_OnTransferToUnit">
+		<Comment xml:space="preserve">Состояние документа - На передаче в СП</Comment>
+		<String Culture="en" xml:space="preserve">On transfer to the SU</String>
+		<String Culture="ru" xml:space="preserve">На передаче в СП</String>
+	</Entry>
+	<Entry Name="AAStates_Doc_OnWaxing">
+		<Comment xml:space="preserve">Состояние документа - На парафировании</Comment>
+		<String Culture="ru" xml:space="preserve">На парафировании</String>
+	</Entry>
+	<Entry Name="AAStates_Doc_PrimaryControl">
+		<Comment xml:space="preserve">Состояние документа - Первичный нормоконтроль</Comment>
+		<String Culture="en" xml:space="preserve">Primary control</String>
+		<String Culture="ru" xml:space="preserve">Первичный нормоконтроль</String>
+	</Entry>
+	<Entry Name="AAStates_Doc_RevisionAfterTreasuryDep">
+		<Comment xml:space="preserve">Состояние документа - На доработке от казначейства</Comment>
+		<String Culture="ru" xml:space="preserve">На доработке от казначейства</String>
+	</Entry>
+	<Entry Name="CardTypes_TypesNames_KrPerforming">
+		<Comment xml:space="preserve">Заголовок типа задания - "Исполнение"</Comment>
+		<String Culture="en" xml:space="preserve">Perform</String>
+		<String Culture="ru" xml:space="preserve">Исполнение</String>
+	</Entry>
+	<Entry Name="Message_Error_FileCommentsNotExisted">
+		<Comment xml:space="preserve">Сообщение для пользователей о том, что при варианте "Не согласовать" не приложен файл категории Замечания/Предложения</Comment>
+		<String Culture="ru" xml:space="preserve">Для завершения задания с вариантом "Не согласовать" приложите, пожалуйста, файл в категорию "Замечания/Предложения"</String>
+	</Entry>
+	<Entry Name="Message_Error_FileProtokolsNotExisted">
+		<Comment xml:space="preserve">Сообщение для пользователей о том, что при варианте "На следующий этап" не приложен файл категории Протоколы</Comment>
+		<String Culture="ru" xml:space="preserve">Для завершения задания с вариантом "На следующий этап" приложите, пожалуйста, файл в категорию "Протоколы"</String>
+	</Entry>
+	<Entry Name="Views_ByInitiator_Subset">
+		<Comment xml:space="preserve">По инициатору. Название используется во вьюхе</Comment>
+		<String Culture="en" xml:space="preserve">By Initiator</String>
+		<String Culture="ru" xml:space="preserve">По инициатору</String>
+	</Entry>
+	<Entry Name="Views_ByPerformer_Subset">
+		<Comment xml:space="preserve">По исполнителю. Название используется во вьюхе</Comment>
+		<String Culture="en" xml:space="preserve">By unit</String>
+		<String Culture="ru" xml:space="preserve">По исполнителю</String>
+	</Entry>
+	<Entry Name="Views_BySecondResponsible_Subset">
+		<Comment xml:space="preserve">По ответственному за группу. Название используется во вьюхе</Comment>
+		<String Culture="en" xml:space="preserve">By group manager</String>
+		<String Culture="ru" xml:space="preserve">По ответственному за группу</String>
+	</Entry>
+</Library>

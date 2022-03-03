@@ -1,0 +1,22 @@
+{
+	".include": [  "Cold.json", "props.solution.json" ],
+
+	"//TabControl": null,
+	"TabControlSelectedBackground": "#DD79C5E6",
+
+	"//WorkplaceTree": null,
+	"WorkplaceTreeHightlightBrush": "#DD79C5E6",
+	"WorkplaceTreeSelectedBrush": "#DD79C5E6",
+
+	"//DocumentTabControl": null,
+	"DocumentTabControlHighlightBrush": {
+	"StartPoint": "1,0",
+	"EndPoint": "1,0",
+	"GradientStops": [
+		[ "#FF22FF22", 0.0 ],
+		[ "#FF66FF66", 1.0 ]
+	]
+	},
+
+	"//End": null
+}

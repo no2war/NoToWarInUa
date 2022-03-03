@@ -1,0 +1,119 @@
+{
+  "Name": "Light",
+  "Caption": "$UI_Tiles_LightTheme",
+  "Hidden": false,
+  "TessaWallpapers": [ "Wallpaper11", "Wallpaper12", "Wallpaper13" ],
+  "DefaultWallpaper": "Wallpaper12",
+  ".include": [ "shared.json" ],
+
+  "//TessaWindow": null,
+  "WindowChromeBackground": "#FFD9D9D9",
+  "WindowChromeBorderBrush": "#FFA6A6A6",
+
+  "//TessaMessageBox": null,
+  "MessageBoxImageInformationBrush": "#FFA6A6A6",
+
+  "//GridView": null,
+  "GridViewHighlightBrush": "#30595959",
+  "GridViewHeaderBackground": "#1C595959",
+
+  "//TabControl": null,
+  "TabControlBorderBrush": "#B0787878",
+  "TabControlBackground": "#18787878",
+  "TabControlCardBackground": "#18787878",
+  "TabControlSelectedBackground": "#3B787878",
+  "TabControlHighlightBackground": "#40787878",
+
+  "//DocumentTabControl": null,
+  "DocumentTabControlBorderBrush": "#AD737373",
+  "DocumentTabControlForeground": "#FF505050",
+  "DocumentTabControlWorkplacesDropDownButtonForeground": "#FF505050",
+  "DocumentTabControlWorkplacesContextMenuForeground": "#FF404040",
+  "DocumentTabControlWorkplacesContextMenuBackground": "#F0E4E4E4",
+  "DocumentTabControlWorkplacesContextMenuBorderBrush": "#FF838383",
+  "DocumentTabControlWorkplacesContextMenuHighlightBrush": "#4F838383",
+  "DocumentTabControlWorkplacesContextMenuHighlightBorderBrush": "#FF838383",
+  "DocumentTabControlBackground": {
+    "StartPoint": "0,0",
+    "EndPoint": "1,1",
+    "GradientStops": [
+      [ "#BBE0E0E0", 0.0 ]
+    ]
+  },
+  "DocumentTabControlSeparatorLeft": {
+    "StartPoint": "0,0",
+    "EndPoint": "0,1",
+    "GradientStops": [
+      [ "#00E8E8E8", 0.0 ],
+      [ "#0FBBBBBB", 0.025 ],
+      [ "#AF9F9F9F", 0.4 ],
+      [ "#AF9F9F9F", 0.6 ],
+      [ "#0FBBBBBB", 0.975 ],
+      [ "#00E8E8E8", 1.0 ]
+    ]
+  },
+  "DocumentTabControlHighlightBrush": {
+    "StartPoint": "0,0",
+    "EndPoint": "0,1",
+    "GradientStops": [
+      [ "#A0666666", 0.0 ],
+      [ "#A0999999", 0.15 ],
+      [ "#A0999999", 0.85 ],
+      [ "#A0666666", 1.0 ]
+    ]
+  },
+
+  "//Cards": null,
+  "CardStatusBarForeground": "#FF000000",
+  "CardStatusBarForegroundHover": "#FF375A90",
+  "CardStatusBarBackground": "#40D7D7D7",
+  "CardStatusBarBackgroundHover": "#FFE6E6E6",
+
+  "//Tasks": null,
+  "TaskBackground": "#DDEBD070",
+  "TaskBorderBrush": "#B0787878",
+  "TaskTypeToggleBackground": "#00D7D7D7",
+  "TaskTypeToggleBackgroundHover": "#60D7D7D7",
+  "TaskTypeToggleBackgroundPressed": "#40D7D7D7",
+
+  "//Files": null,
+  "FileListBackground": "#FFFCFCFC",
+  "FileBusyBackground": "#FFFA8500",
+  "FileModifiedBackground": "#FFFAF20F",
+  "FilePlaceholderForeground": "#FF9A9898",
+  "FilePlaceholderBackground": "#55E6E6E6",
+
+  "//Tiles": null,
+  "TileForeground": "#FF3B3B3B",
+  "TileBackground": "#ECECECEC",
+  "TileHoverBackground": "#FFDBDBDB",
+  "TileDividerBrush": "#FFA4A4A4",
+  "TileSliderForeground": "#FF4E4E4E",
+  "TileSliderBackground": "#80D7D7D7",
+
+  "//Views": null,
+  "ViewFilterMenuBackground": "#FFEAE8ED",
+  "ViewFilterMenuForeground": "#FF404040",
+  "ViewFilterAreaBackground": "#CCEDEDED",
+  "ViewToolbarBackground": "#66EDEDED",
+  "ViewRowCountForeground": "#FF202020",
+  "ViewRowCountHoverForeground": "#FF1C2E4A",
+  "ViewRowCountBackground": "#40D7D7D7",
+  "ViewRowCountHoverBackground": "#FFE6E6E6",
+
+  "//WorkplaceTree": null,
+  "WorkplaceTreeForeground": "#FF404040",
+  "WorkplaceTreeExpanderForeground": "#FF404040",
+  "WorkplaceTreeIconForeground": "#FF505050",
+  "WorkplaceTreeSubsetForeground": "#FF6C6C6C",
+  "WorkplaceTreeBackground": "#B0E4E4E4",
+  "WorkplaceTreeVerticalOffsetBrush": "#D0E4E4E4",
+  "WorkplaceTreeMenuBackground": "#FFEAE8ED",
+  "WorkplaceTreeMenuForeground": "#FF404040",
+  "WorkplaceTreeExtraBackground": "#FF606060",
+  "WorkplaceTreeHightlightBrush": "#1F3F3F3F",
+  "WorkplaceTreeSelectedBrush": "#4F838383",
+  "ViewDialogSelectButtonBackground": "#1C595959",
+
+  "//End": null
+}
