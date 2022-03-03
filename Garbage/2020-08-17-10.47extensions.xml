@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<extensions xmlns="http://syntellect.ru/tessa/include">
+
+	<include file="Tessa.Extensions.Default.Shared.dll" />
+	<include file="Tessa.Extensions.Default.Client.dll" clientOnly="true" />
+
+	<include file="Tessa.Extensions.Shared.dll" />
+	<include file="Tessa.Extensions.Client.dll" clientOnly="true" />
+	
+	<include file="Tessa.Extensions.ClientAA.dll" clientOnly="true" />
+	<include file="Tessa.Extensions.SharedAA.dll" />
+
+	<include file="Tessa.Extensions.AAUK.Client.dll" clientOnly="true" />
+	<include file="Tessa.Extensions.AAUK.Shared.dll" />
+
+</extensions>
