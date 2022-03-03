@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<configurate version="1.0">
+    <modules>
+        <module name="LibVRServer" />
+        <module name="Student">
+            <section name="Preferences">
+                <key name="ConnectName" type="1" value="10.33.242.10" />
+                <key name="unlockscreen" type="1" value="topdomain" />
+                <key name="Enablelockscreen" type="0" value="0" />
+                <key name="HideFloatBar" type="0" value="0" />
+            </section>
+            <section name="RemoteCommand">
+                <key name="NumCommands" type="0" value="9" />
+                <key name="CommandAutoSearch0" type="0" value="1" />
+                <key name="CommandDispStyle0" type="0" value="0" />
+                <key name="CommandDesc0" type="1" value="Блокно" />
+                <key name="CommandLine0" type="1" value="C:\Windows\system32\NOTEPAD.EXE" />
+                <key name="CommandParameters0" type="1" value="" />
+                <key name="CommandAutoSearch1" type="0" value="1" />
+                <key name="CommandDispStyle1" type="0" value="0" />
+                <key name="CommandDesc1" type="1" value="Paint" />
+                <key name="CommandLine1" type="1" value="C:\Windows\system32\MSPAINT.EXE" />
+                <key name="CommandParameters1" type="1" value="" />
+                <key name="CommandAutoSearch2" type="0" value="1" />
+                <key name="CommandDispStyle2" type="0" value="0" />
+                <key name="CommandDesc2" type="1" value="Wordpad" />
+                <key name="CommandLine2" type="1" value="C:\Windows\system32\WORDPAD.EXE" />
+                <key name="CommandParameters2" type="1" value="" />
+                <key name="CommandAutoSearch3" type="0" value="1" />
+                <key name="CommandDispStyle3" type="0" value="0" />
+                <key name="CommandDesc3" type="1" value="Калькуто" />
+                <key name="CommandLine3" type="1" value="C:\Windows\system32\CALC.EXE" />
+                <key name="CommandParameters3" type="1" value="" />
+                <key name="CommandAutoSearch4" type="0" value="1" />
+                <key name="CommandDispStyle4" type="0" value="0" />
+                <key name="CommandDesc4" type="1" value="Командная строка" />
+                <key name="CommandLine4" type="1" value="C:\Windows\system32\cmd.exe" />
+                <key name="CommandParameters4" type="1" value="" />
+                <key name="CommandAutoSearch5" type="0" value="1" />
+                <key name="CommandDispStyle5" type="0" value="0" />
+                <key name="CommandDesc5" type="1" value="Internet Explorer" />
+                <key name="CommandLine5" type="1" value="C:\Windows\system32\IEXPLORE.EXE" />
+                <key name="CommandParameters5" type="1" value="" />
+                <key name="CommandAutoSearch6" type="0" value="1" />
+                <key name="CommandDispStyle6" type="0" value="0" />
+                <key name="CommandDesc6" type="1" value="ПроводниWindows" />
+                <key name="CommandLine6" type="1" value="C:\Windows\EXPLORER.EXE" />
+                <key name="CommandParameters6" type="1" value="" />
+                <key name="CommandAutoSearch7" type="0" value="1" />
+                <key name="CommandDispStyle7" type="0" value="0" />
+                <key name="CommandDesc7" type="1" value="Повысить быстродействие виделокальныстуденто" />
+                <key name="CommandLine7" type="1" value="C:\Program Files (x86)\Linco\Linco V8.2\Language\1049\TDOvrSet.EXE" />
+                <key name="CommandParameters7" type="1" value="EnableOverlay" />
+                <key name="CommandAutoSearch8" type="0" value="1" />
+                <key name="CommandDispStyle8" type="0" value="0" />
+                <key name="CommandDesc8" type="1" value="Повысить качество дисплеев мониторостуденто" />
+                <key name="CommandLine8" type="1" value="C:\Program Files (x86)\Linco\Linco V8.2\Language\1049\TDOvrSet.EXE" />
+                <key name="CommandParameters8" type="1" value="DisableOverlay" />
+            </section>
+        </module>
+    </modules>
+</configurate>

@@ -1,0 +1,50 @@
+select
+#if(Normal) {
+	t.CardID,
+	t.CardID as SubTypeID,
+	t.Name as SubTypeName,
+	t.ResponsibleName as ResponsibleName,
+	t.rn as rn
+	}
+#if(Count) {
+	t.cnt
+}
+from (
+		select
+		#if(Normal) {
+			categories.ID as CardID,
+			categories.Name as name,
+			categories.ResponsibleName as ResponsibleName,
+			row_number() over (order by name) as rn
+		}
+		#if(Count) {
+			count(*) as cnt
+		}
+		from CategoryRegulatoryDoc categories with (nolock)
+		where 1=1
+		#param(name, categories.Name)
+	) as t
+#if(PageOffset) {
+where t.rn >= #param(PageOffset) and t.rn < (#param(PageOffset) + #param(PageLimit))
+}
+
+
+---------------------------
+
+
+#view(DefaultSortDirection: asc, Paging: optional, RowCountSubset: Count)
+#column(Alias: CardID, Hidden: true)
+#column(Alias: SubTypeID, Hidden: true)
+#column(Alias: SubTypeName, Caption: Наименование)
+#column(Alias: ResponsibleName, Caption: Ответственный)
+#column(Alias: rn, Hidden: true)
+#reference(ColPrefix: Card, RefSection: Instances, DisplayValueColumn: CardID, IsCard: true, OpenOnDoubleClick: true)
+#reference(ColPrefix: SubType, RefSection: AASettingsCategoryRegulatoryDoc, DisplayValueColumn: SubTypeName, IsCard: true, OpenOnDoubleClick: true)
+
+#param(Alias: Name, Caption: Наименование, Hidden: false, Type: nvarchar, Multiple: false)
+
+#subset(Alias: Count)
+
+
+
+

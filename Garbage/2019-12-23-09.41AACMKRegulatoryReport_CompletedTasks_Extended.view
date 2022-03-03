@@ -1,0 +1,502 @@
+#tessa_exchange_format(Version:1, CreationTime:2019-12-20T13\:22\:09) {
+	#exchange_view(RowID:9c9676df-c455-435e-aa14-e5b1cd00a37e, Alias:AACMKRegulatoryReport_CompletedTasks_Extended, Caption:Доп данные к отчету 3, ModifiedById:998e3b58-0c36-4108-a075-8ea43f099714, ModifiedByName:Бусыгин А. А. \(ДСР\), FormatVersion:2, ModifiedDateTime:2019-12-20T13\:17\:03, GroupName:AA Local) {
+		#metadata {
+			#view(DefaultSortColumn: CreationDate, DefaultSortDirection: asc, Paging: optional, RowCountSubset: Count)
+
+
+			#column(Alias: FullNumber, Caption: Проектный номер, Type: String, SortBy: dci.FullNumber)
+			#column(Alias: DocTypeName, Caption: Вид Документа, Type: String, SortBy: krdt.Title)
+			#column(Alias: StageName, Caption: Этап,Type: String, SortBy: [StageName].[Value])
+			#column(Alias: maxcycle, Caption: Кол-во циклов)
+			#column(Alias: AuthorName, Caption: Куратор, Type: String, SortBy: dci.AuthorName )
+			#column(Alias: RoleName, Caption: Ответственный исполнитель,Type: String, SortBy: tasks.RoleName)
+			#column(Alias: CompletedByName, Caption: Исполнитель задания,Type: String, SortBy: tasks.CompletedByName)
+			#column(Alias: dayexpired, Caption: Кол-во проср. дней, Type: int)
+			#column(Alias: StartDate, Caption: Дата поступления задания, Type: datetime)
+			#column(Alias: CompletedDate, Caption: Дата выполнения задания, Type: datetime)
+			#column(Alias: NumberCMK, Caption: Обозначение, Type: String, SortBy: aaci.NumberCMK)
+			#column(Alias: Subject, Caption: Наименование,Type: String, SortBy: dci.Subject )
+			#column(Alias: CreationDate, Caption: Дата создания, Type: Date, SortBy:dci.CreationDate)
+			#column(Alias: ResponsibleName, Caption: Инициатор, Type: String, SortBy: aaci.ResponsibleName)
+			#column(Alias: DepartmentName, Caption: Исполнитель, Type: String, SortBy: dci.DepartmentName)
+			#column(Alias: AccessLevelName, Caption: Уровень доступа)
+			#column(Alias: AccessLimitationShortName, Caption: Вид ограничения)
+
+
+
+			#column(Alias: CardID, Hidden: true)
+
+
+
+
+			#column(Alias: rn, Hidden: true)
+
+			#reference(ColPrefix: Card, RefSection: Instances, DisplayValueColumn: CardID, IsCard: true, OpenOnDoubleClick: true)
+
+			#param(Alias: ShowOnlyExpired, Caption: Показывать только просроченные, Type: Boolean, AllowedOperands: IsTrue IsFalse,Multiple: false)
+
+			#param(Alias: Name, Caption: Наименование, Hidden: false, Type: nvarchar, Multiple: false)
+			#param(Alias: ProjectNumber, Caption: Проектный номер, Hidden: false, Type: nvarchar, Multiple: false)
+			#param(Alias: FullNumber, Caption: Обозначение, Hidden: false, Type: nvarchar, Multiple: false)
+
+			#param(Alias: Author, Caption: Куратор, Multiple: true, Type: Guid, RefSection: PersonalRolesOnlyForView, AllowedOperands: Equality NonEquality) {
+				#autocomplete(View: UsersForViews, Param: Name, PopupColumns: 1 4)
+			}
+
+			#param(Alias: Unit, Caption: Исполнитель, Hidden: false, Multiple: true, Type: Guid, RefSection: AADepartments_CMK, AllowedOperands: Equality)
+			{
+				#autocomplete(View: AADepartments_CMK, Param: Name, PopupColumns: 1)
+			}
+
+			#param(Alias: Initiator, Caption: Инициатор, Hidden: false, Multiple: true, Type: Guid, RefSection: AprovalCEORoles_CMK, AllowedOperands: Equality)
+			{
+				#autocomplete(View: AACEODic, Param: Name, PopupColumns: 2)
+			}
+
+			#param(Alias: SecondResponsible, Caption: Ответственный за группу, Hidden: false, Multiple: true, Type: Guid, RefSection: AprovalCEORoles_CMK, AllowedOperands: Equality)
+			{
+				#autocomplete(View: AACEODic, Param: Name, PopupColumns: 2)
+			}
+
+			#param(Alias: AccessLevel, Caption: $CardTypes_Controls_DocAccessLevel, Multiple: false, Type: $AACommonInfo.AccessLevelID, RefSection: DocAccessLevels, AllowedOperands: Equality NonEquality) {
+				#autocomplete(View: DocAccessLevels, Param: Name, PopupColumns: 1)
+				#dropdown(View: DocAccessLevels, PopupColumns: 1)
+			}
+
+			#param(Alias: AccessLimitation, Caption: $CardTypes_Controls_AccessLimitation, Multiple: true, Type: $AACommonInfo.AccessLimitationID, RefSection: DocAccessLimitations, AllowedOperands: Equality NonEquality) {
+				#autocomplete(View: DocAccessLimitations, Param: Name, PopupColumns: 1)
+				#dropdown(View: DocAccessLimitations, PopupColumns: 1)
+			}
+			#param(Alias: Type, Caption: $Views_Registers_Type_Param, Multiple: true, Type: $DocumentCommonInfo.DocTypeID, RefSection: KrCardTypesVirtual) {
+				#autocomplete(View: KrTypesEffective, Param: Caption, PopupColumns: 1)
+				#dropdown(View: KrTypesEffective, PopupColumns: 1)
+			}
+
+			#param(Alias: TypeApproval, Caption: Тип согласующего, Type: Int, Multiple: false, Hidden: true)
+			#param(Alias: StartDate, Caption: Дата начала,Type: DateTime,Multiple: false,AllowedOperands: Equality, Hidden: true)
+			#param(Alias: CompleteDate, Caption: Дата окончания,Type: DateTime,Multiple: false,AllowedOperands: Equality, Hidden: true)
+			#param(Alias: Role, Caption: Роль, Hidden: false, Type: $TaskHistory.RoleID, RefSection: Roles, AllowedOperands: Equality NonEquality,Multiple: false)
+			{
+				#autocomplete(View: Roles, Param: Name, PopupColumns: 1)
+			}
+
+			#subset(Alias: Count)
+		}
+		#description {}
+		#ms_query {
+			DECLARE @DateStart DATETIME = null;
+			DECLARE @DateFinish DATETIME = null;
+
+
+			\#if\(CompleteDate && !CompleteDate.ValueIsNull\) \{set @DateFinish = '\#eval\(CompleteDate.Value.ToString\("s"\)\)'\}
+			\#if\(StartDate && !StartDate.ValueIsNull\) \{set @DateStart = '\#eval\(StartDate.Value.ToString\("s"\)\)'\}
+
+			DECLARE @typeaproval int
+			set @typeaproval = 1
+			\#if\(TypeApproval\) \{	set @typeaproval = \#param\(TypeApproval\)\}
+
+			DECLARE @dayexpired int
+			set @dayexpired = 0
+			\#if \(ShowOnlyExpired && ShowOnlyExpired.CriteriaName = "IsTrue"\) \{
+					set @dayexpired = 1
+					\}
+
+
+			DECLARE @StageNames TABLE  \(Name varchar\(128\)\, id int\)
+			INSERT INTO @StageNames
+			select 'Согласование с исполнителем'  as Name\, 1 as id
+			INSERT INTO @StageNames
+			select 'Согласование с инициатором'  as Name\, 2 as id
+			INSERT INTO @StageNames
+			select 'Согласование с ответственным за группу \(подгруппу\) СТ ИС / ВНД'  as Name\, 3 as id
+			INSERT INTO @StageNames
+			select 'Первичный нормоконтроль'  as Name\, 4 as id
+			INSERT INTO @StageNames
+			select 'Нормоконтроль'  as Name\, 5 as id
+			INSERT INTO @StageNames
+			select 'Согласование с ДСР'  as Name\, 6 as id
+			INSERT INTO @StageNames
+			select 'Согласование с ДПОД'  as Name\, 7 as id
+			INSERT INTO @StageNames
+			select 'Согласование с заинтересованными лицами'  as Name\, 8 as id
+			INSERT INTO @StageNames
+			select 'Парафирование'  as Name\, 9 as id
+
+
+
+
+			DECLARE @ALLCMKTasks TABLE  \(RowID uniqueidentifier\, ID uniqueidentifier\,DocTypeID uniqueidentifier\, TypeID uniqueidentifier \, RoleID uniqueidentifier\, RoleName varchar\(128\)\, CompletedByName varchar\(128\)\, StartDate datetime\, CompletedDate datetime\, RealCompleted datetime\,dayexpired int\, typeaproval int\)
+
+			-- временная таблица для того чтобы знать корень дерева 
+			;WITH DelegetatedTaskCTE \(RowID\, ParentRowID\, ParentNode\, ParentNodeRoleID\, ParentStartDate\)
+				AS
+			    \(
+					SELECT RowID\, ParentRowID\, RowID\, RoleID\, Created
+					from TaskHistory as th WITH\(NOLOCK\) where th.ParentRowID is null
+
+					UNION ALL
+							
+					SELECT th.RowID\, th.ParentRowID\, t2.ParentNode\, t2.ParentNodeRoleID\, t2.ParentStartDate
+					from TaskHistory as th WITH\(NOLOCK\) 
+					JOIN DelegetatedTaskCTE t2 ON th.ParentRowID=t2.RowID
+				\)
+				
+			--select 
+			INSERT INTO @ALLCMKTasks
+			SELECT 
+				th.RowID\,
+				dci.ID\,
+				dci.DocTypeID\,
+				th.TypeID\,
+				delegatecte.ParentNodeRoleID\,
+				th.RoleName\,
+				th.CompletedByName\,
+				delegatecte.ParentStartDate\,
+				ISNULL\(th.Completed\,GETDATE\(\)\)\,
+				th.Completed
+				\, null
+				\, null
+				FROM DocumentCommonInfo as dci with \(nolock\)
+				\#if \(FullNumber || Initiator || SecondResponsible || AccessLevel || AccessLimitation\) \{ inner join AACommonInfo as aaci with \(NOLOCK\) on aaci.ID = dci.ID \}
+				inner join KrApprovalCommonInfo as kraci with \(NOLOCK\) on kraci.MainCardID = dci.ID
+				inner join TaskHistory as th with \(nolock\)  on th.ID=dci.ID
+				inner join DelegetatedTaskCTE as delegatecte on delegatecte.RowID=th.RowID
+				where 
+					\(kraci.StateID!=0  and kraci.StateID!=5 \) -- В стадии Проект и в стадии Отменено не учитываем
+					and
+					\(
+						dci.CardTypeID = 'b15b1d70-f303-4d2b-a761-283f52fba932'
+						or dci.CardTypeID = '1dd01a21-dcc4-48fa-8183-16195ca19c6d'
+						or dci.CardTypeID = '8f98ff9c-afc0-4592-a37d-345125528c8f'
+					\)
+					and 
+					\( 
+						th.TypeID ='E4D7F6BF-FEA9-4A3B-8A5A-E1A0A40DE74C' -- Согласование
+						or th.RoleID ='E5FAA9B0-A728-4F12-A720-EEBB657EDE87' -- Парафирование  
+					\)
+					\#if\(CompleteDate && !CompleteDate.ValueIsNull && StartDate && !StartDate.ValueIsNull\)\{
+						and th.Created>=@DateStart -- В отчетном периоде
+						and th.Created< =@DateFinish
+						\} 
+					\#if\(Role && !Role.ValueIsNull\) 
+						\{
+							and th.RoleID = \#param\(Role\)
+						\}
+					\#param\(Name\, dci.Subject\)
+					\#param\(ProjectNumber\, dci.FullNumber\)
+					\#param\(FullNumber\, aaci.NumberCMK\)
+					\#param\(Initiator\, aaci.ResponsibleID\)
+					\#param\(SecondResponsible\, aaci.SecondResponsibleID\)
+					\#param\(AccessLevel\, aaci.AccessLevelID\)
+					\#param\(AccessLimitation\, aaci.AccessLimitationID\)
+					\#param\(Unit\, dci.DepartmentID\)
+					\#param\(Author\, dci.AuthorID\)
+					\#param\(Type\, dci.DocTypeID\)
+					
+					
+					
+			/********************
+			Задачи руководителя СП 1
+			********************/
+			UPDATE @ALLCMKTasks 
+			SET dayexpired = t.dayexpired\, typeaproval = 1
+			FROM @ALLCMKTasks as task
+			    INNER JOIN 
+			    \(
+					SELECT 
+					task.RowID as rowid\,
+					case
+						when \(dbo.CalendarGetDateDiff\(task.StartDate\,task.CompletedDate\)/53 < 3 \)
+							then 0
+						else dbo.CalendarGetDateDiff\(task.StartDate\,task.CompletedDate\)/53 - 2
+					end as dayexpired
+					from @ALLCMKTasks as task
+					inner join DocumentCommonInfo as dci with \(nolock\) on dci.ID=task.ID
+					inner join DepartmentRoles as dr with \(nolock\) on dr.ID = dci.DepartmentID and dr.HeadUserID = task.RoleID
+					\) as t
+				  ON t.rowid = task.RowID
+			where task.RowID=t.rowid
+
+			/*
+			UPDATE @ALLCMKTasks 
+			SET dayexpired = t.dayexpired\, typeaproval = 1
+			FROM @ALLCMKTasks as task
+			    INNER JOIN 
+			    \(
+					SELECT 
+					task.RowID as rowid\,
+					case
+						when \(dbo.CalendarGetDateDiff\(task.StartDate\,task.CompletedDate\)/53 < 3 \)
+							then 0
+						else dbo.CalendarGetDateDiff\(task.StartDate\,task.CompletedDate\)/53 - 2
+					end as dayexpired
+					from @ALLCMKTasks as task
+					inner join AACommonInfo as aaci with \(nolock\) on aaci.ID=task.ID
+					inner join DepartmentRoles as dr with \(nolock\) on dr.ID = aaci.DepartmentID and dr.HeadUserID = task.RoleID
+					\) as t
+				  ON t.rowid = task.RowID
+			where task.RowID=t.rowid
+			*/
+
+
+			/********************
+			Задачи Инициатора 2
+			********************/
+			UPDATE @ALLCMKTasks 
+			SET dayexpired = t.dayexpired\, typeaproval = 2
+			FROM @ALLCMKTasks as task
+			    INNER JOIN 
+			    \(
+				SELECT 
+					task.RowID as rowid\,
+					case
+						when \(dbo.CalendarGetDateDiff\(task.StartDate\,task.CompletedDate\)/53 < 3 \)
+							then 0
+						else dbo.CalendarGetDateDiff\(task.StartDate\,task.CompletedDate\)/53 - 2
+					end as dayexpired
+					from @ALLCMKTasks as task
+					inner join AACommonInfo as acci with \(nolock\) on acci.ID=task.ID and acci.ResponsibleID=task.RoleID 
+				\) as t
+				  ON t.rowid = task.RowID
+			where task.RowID=t.rowid
+
+
+			/********************
+			Задачи Согласование с ответственным за группу \(подгруппу\) СТ ИС / ВНД 3
+			********************/
+			UPDATE @ALLCMKTasks 
+			SET dayexpired = t.dayexpired\, typeaproval = 3
+			FROM @ALLCMKTasks as task
+			    INNER JOIN 
+			    \(
+				SELECT 
+					task.RowID as rowid\,
+					case
+						when \(dbo.CalendarGetDateDiff\(task.StartDate\,task.CompletedDate\)/53 < 6 \)
+							then 0
+						else dbo.CalendarGetDateDiff\(task.StartDate\,task.CompletedDate\)/53 - 5
+					end as dayexpired
+					from @ALLCMKTasks as task
+					inner join AACommonInfo as acci with \(nolock\) on acci.ID=task.ID and acci.SecondResponsibleID=task.RoleID 
+					where task.typeaproval is null
+				\) as t
+				  ON t.rowid = task.RowID
+			where task.RowID=t.rowid
+
+
+			/********************
+			Задачи заинтересованных согласующих лиц 8
+			********************/
+			UPDATE @ALLCMKTasks 
+			SET dayexpired = t.dayexpired\, typeaproval = 8
+			FROM @ALLCMKTasks as task
+			    INNER JOIN 
+			    \(
+				SELECT 
+					task.RowID as rowid\,
+					case
+						when \(dbo.CalendarGetDateDiff\(task.StartDate\,task.CompletedDate\)/53 < 6 \)
+							then 0
+						else dbo.CalendarGetDateDiff\(task.StartDate\,task.CompletedDate\)/53 - 5
+					end as dayexpired
+					from @ALLCMKTasks as task
+					inner join PersonalRoles as pr with \(nolock\) on pr.ID=task.RoleID and task.typeaproval is null
+				\) as t
+				  ON t.rowid = task.RowID
+			where task.RowID=t.rowid
+
+
+			/********************
+			Задачи Первичного нормоконтроля 4
+			********************/
+			UPDATE @ALLCMKTasks 
+			SET dayexpired = t.dayexpired\, typeaproval = 4
+			FROM @ALLCMKTasks as task
+			    INNER JOIN 
+			    \(
+				SELECT 
+					task.RowID as rowid\,
+					case
+						when \(dbo.CalendarGetDateDiff\(task.StartDate\,task.CompletedDate\)/53 < 6 \)
+							then 0
+						else dbo.CalendarGetDateDiff\(task.StartDate\,task.CompletedDate\)/53 - 5
+					end as dayexpired
+				from @ALLCMKTasks as task
+				where task.RoleID = '5F8EEB17-6DAD-419C-A25A-ED9DCB6D401C'
+				\) as t
+				  ON t.rowid = task.RowID
+			where task.RowID=t.rowid
+
+			/********************
+			Задачи Нормоконтроля 5
+			********************/
+			UPDATE @ALLCMKTasks 
+			SET dayexpired = t.dayexpired\, typeaproval = 5
+			FROM @ALLCMKTasks as task
+			    INNER JOIN 
+			    \(
+					SELECT 
+					task.RowID as rowid\,
+					case
+						when \(dbo.CalendarGetDateDiff\(task.StartDate\,task.CompletedDate\)/53 < 6 \)
+							then 0
+						else dbo.CalendarGetDateDiff\(task.StartDate\,task.CompletedDate\)/53 - 5
+					end as dayexpired
+					from @ALLCMKTasks as task
+					where task.RoleID = 'C17AA92A-1D12-4068-A1A1-6CB56ABC27E2'
+				\) as t
+				  ON t.rowid = task.RowID
+			where task.RowID=t.rowid
+
+			/********************
+			Задачи ДСР 6
+			********************/
+			UPDATE @ALLCMKTasks 
+			SET dayexpired = t.dayexpired\, typeaproval = 6
+			FROM @ALLCMKTasks as task
+			    INNER JOIN 
+			    \(
+					SELECT 
+					task.RowID as rowid\,
+					case
+						when \(dbo.CalendarGetDateDiff\(task.StartDate\,task.CompletedDate\)/53 < 6 \)
+							then 0
+						else dbo.CalendarGetDateDiff\(task.StartDate\,task.CompletedDate\)/53 - 5
+					end as dayexpired
+					from @ALLCMKTasks as task
+					where task.RoleID = '790D926C-81D2-4ED8-87AF-FB7C7EA25FCA'
+				\) as t
+				  ON t.rowid = task.RowID
+			where task.RowID=t.rowid
+
+			/********************
+			Задачи ДПОД 7
+			********************/
+
+			UPDATE @ALLCMKTasks 
+			SET dayexpired = t.dayexpired\, typeaproval = 7
+			FROM @ALLCMKTasks as task
+			    INNER JOIN 
+			    \(
+				SELECT 
+					task.RowID as rowid\,
+					case
+						when \(dbo.CalendarGetDateDiff\(task.StartDate\,task.CompletedDate\)/53 < 6 \)
+							then 0
+						else dbo.CalendarGetDateDiff\(task.StartDate\,task.CompletedDate\)/53 - 5
+					end as dayexpired
+				from @ALLCMKTasks as task
+				where task.RoleID = 'DE76CACE-6490-4535-A20D-CD7EC96B1981'
+				\) as t
+				  ON t.rowid = task.RowID
+			where task.RowID=t.rowid
+
+			/********************
+			Задачи парафирования 9
+			********************/
+
+			UPDATE @ALLCMKTasks 
+			SET dayexpired = t.dayexpired\, typeaproval = 9
+			FROM @ALLCMKTasks as task
+			    INNER JOIN 
+			    \(
+				SELECT 
+					task.RowID as rowid\,
+					case
+						when \(dbo.CalendarGetDateDiff\(task.StartDate\,task.CompletedDate\)/53 < 6 \)
+							then 0
+						else dbo.CalendarGetDateDiff\(task.StartDate\,task.CompletedDate\)/53 - 5
+					end as dayexpired
+				from @ALLCMKTasks as task
+				where task.RoleID = 'E5FAA9B0-A728-4F12-A720-EEBB657EDE87' 
+				\) as t
+				  ON t.rowid = task.RowID
+			where task.RowID=t.rowid
+
+
+			select
+			\#if\(Normal\) \{
+				t.FullNumber as FullNumber\,
+				t.DocTypeName as DocTypeName\,
+				t.[StageName] as StageName\,
+				t.[maxcycle] as maxcycle\,
+				t.AuthorName as AuthorName\,
+				t.RoleName as RoleName\,
+				t.CompletedByName as CompletedByName\,
+				t.dayexpired as dayexpired\,
+				t.StartDate as StartDate\,
+				t.CompletedDate as CompletedDate\,
+				t.NumberCMK as NumberCMK\,
+				t.Subject as Subject\,
+				t.CreationDate as CreationDate\,
+				t.ResponsibleName as ResponsibleName\,
+				t.DepartmentName as DepartmentName\,
+				t.[AccessLevelName] as [AccessLevelName]\,
+				t.[AccessLimitationShortName] as [AccessLimitationShortName]\,
+				
+				
+						
+				t.CardId as CardId\,
+				
+				
+				
+				
+				t.rn as rn
+				\}
+			\#if\(Count\) \{
+				t.cnt
+			\}
+			from \(
+					select
+					\#if\(Normal\) \{
+						krdt.Title as DocTypeName\,
+						dci.CreationDate as CreationDate\,
+						dci.Subject as Subject\,
+						aaci.NumberCMK as NumberCMK\,
+						dci.AuthorName as AuthorName\,
+						dci.DepartmentName as DepartmentName\,
+						aaci.ResponsibleName as ResponsibleName\,
+						dci.FullNumber as FullNumber\,
+						[aaci].[AccessLevelName] as [AccessLevelName]\,
+						[aaci].[AccessLimitationShortName] as [AccessLimitationShortName]\,
+						[stnames].[name] as StageName\,
+						[MaxCycle].[Value] as maxcycle\,
+						tasks.ID as CardId\,
+						tasks.RoleName as RoleName\,
+						case
+							when \(
+								tasks.CompletedByName is null
+							\) then tasks.RoleName
+						else  tasks.CompletedByName
+						end as CompletedByName\,
+						tasks.dayexpired as dayexpired\,
+						tasks.StartDate as StartDate\,
+						tasks.RealCompleted as CompletedDate\,
+						row_number\(\) over \(order by \#order_by\) as rn
+					\}
+					\#if\(Count\) \{
+						count\(*\) as cnt
+					\}
+					from @ALLCMKTasks as tasks
+					inner join KrDocType as krdt with \(nolock\) on krdt.ID=tasks.DocTypeID
+					inner join DocumentCommonInfo as dci with \(nolock\) on dci.ID=tasks.ID
+					inner join AACommonInfo as aaci with \(NOLOCK\) on aaci.ID = dci.ID
+					inner join KrApprovalCommonInfo as kraci with \(NOLOCK\) on kraci.MainCardID = dci.ID
+					inner join @StageNames as stnames on stnames.id = tasks.typeaproval
+					outer apply \(select max\(kr.Cycle\) as [Value]
+										from KrApprovalHistory kr with\(nolock\)
+										inner join TaskHistory th with\(nolock\) on kr.HistoryRecord = th.RowID
+										where th.ID = dci.ID
+										\) as MaxCycle
+					where 1=1
+					and tasks.dayexpired>=@dayexpired
+					and \(tasks.typeaproval=@typeaproval or @typeaproval=10\)
+				\)t
+				\#if\(PageOffset\) \{
+				where t.rn >= \#param\(PageOffset\) and t.rn < \(\#param\(PageOffset\) + \#param\(PageLimit\)\)
+				\}
+		}
+		#pg_query {}
+		#role(RoleID:570edb6a-7fb0-46fc-acb6-8f7a07f024c0, ViewID:9c9676df-c455-435e-aa14-e5b1cd00a37e) 
+	}
+}
